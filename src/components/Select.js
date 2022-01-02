@@ -2,7 +2,7 @@
 function Select(props) {
     return (
         <div style={{ display: "flex", alignItems: "center" }}>
-            <select defaultValue={props.item.value} onChange={(e) => props.changeHandler(e, props.index)} className='form-control' required>
+            <select value={props.item.value} onChange={(e) => props.changeHandler(e, props.index)} className='form-control' required>
                 <option value='defValue' disabled>Default value</option>
                 {props.item.list.map((option, inIndex) => {
                     return <option
