@@ -86,7 +86,9 @@ function Sidebar(props) {
                 if (selItem === inItem.value) {
                     resultValue.schema.push({ [inItem.value]: inItem.label })
                 }
+                return 0;
             })
+            return 0;
         })
         console.log(resultValue, "Result")
     }
