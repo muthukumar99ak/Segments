@@ -91,6 +91,11 @@ function Sidebar(props) {
             return 0;
         })
         console.log(resultValue, "Result")
+        alert('Segment saved successfully')
+        setSelectedVal([
+            { value: 'defValue', list: initialState }
+        ])
+        setSegmentName('')
     }
 
     return <div className={`sidebar ${props.view ? 'active' : null}`}>
