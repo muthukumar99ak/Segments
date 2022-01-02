@@ -76,12 +76,12 @@ function Sidebar(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        let selectVal = selectedVal.map(item => item.value)
+        let selectValue = selectedVal.map(item => item.value)
         let resultValue = {
             "segment_name": segmentName,
             schema: []
         }
-        selectVal.map(selItem => {
+        selectValue.map(selItem => {
             initialState.map(inItem => {
                 if (selItem === inItem.value) {
                     resultValue.schema.push({ [inItem.value]: inItem.label })
@@ -90,8 +90,15 @@ function Sidebar(props) {
             })
             return 0;
         })
-        console.log(resultValue, "Result")
+        let copySel = [...selectedVal];
+        let selectVal = copySel.map(item => item.value)
+        let checkVal = selectVal.filter(item => item === 'defValue');
+        if (checkVal.length > 0) {
+            alert('Please select value');
+            return;
+        }
         alert('Segment saved successfully')
+        console.log(resultValue, "Result")
         setSelectedVal([
             { value: 'defValue', list: initialState }
         ])
@@ -102,7 +109,7 @@ function Sidebar(props) {
         <form onSubmit={handleSubmit}>
             <div>
                 <label className='form-label'>Enter the Name of the Segment</label>
-                <input className='form-control' placeholder='Enter segment name' value={segmentName} onChange={(e) => setSegmentName(e.target.value)} />
+                <input className='form-control' placeholder='Enter segment name' value={segmentName} onChange={(e) => setSegmentName(e.target.value)} required />
             </div>
             <p>To save your segment, you need to add the schemas to build the query.</p>
             {
